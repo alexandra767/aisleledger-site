@@ -40,8 +40,12 @@
 <p>If you link a saved store to a Kroger-family store, scanning an item there sends the barcode number and that Kroger store's ID to our price server, which asks Kroger's public product service for the price. Finding a Kroger store sends the ZIP code you type, or the location saved with that store (the server rounds it to about a kilometer before looking it up). Nothing that identifies you is sent. The server keeps prices for a few hours so repeat scans are fast; it does not keep a record of who asked. It runs on Cloudflare.</p>
 <h2>Anonymous usage statistics</h2>
 <p>To learn which features get used, the App sends anonymous usage statistics to <a href="https://telemetrydeck.com/privacy/">TelemetryDeck</a>, a privacy-first analytics service based in Germany: event names (for example "trip started" or "coupon saved"), counts such as how many items a trip had, the app and iOS version, device model, locale, and a one-way hash of your device's vendor identifier that cannot be turned back into you. It never includes prices, totals, item or store names, barcodes, coupon details, or anything you type. You can turn it off any time in Settings &rarr; Privacy &rarr; Share anonymous usage statistics.</p>
+<h2>Crash reports</h2>
+<p>If the App crashes or freezes, Apple gives it a technical summary the next time it opens (the kind of error and where in the App's code it happened). With usage statistics on, the App sends that summary to TelemetryDeck so we can fix it. It contains no shopping data, photos or anything you typed, and the same switch turns it off.</p>
+<h2>Receipts</h2>
+<p>Receipt photos you scan, and the text read from them, are saved on your phone with that trip and never uploaded.</p>
 <h2>Ads and tracking</h2>
-<p>The App contains no advertising or crash-reporting software, and it does not track you across apps or websites.</p>
+<p>The App contains no advertising software, and it does not track you across apps or websites.</p>
 <h2>Purchases</h2>
 <p>AisleLedger Pro is an auto-renewing subscription handled entirely by Apple. We never see your payment details. Apple's privacy policy covers the purchase: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
 <h2>Children</h2>
