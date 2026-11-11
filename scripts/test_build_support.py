@@ -1,7 +1,6 @@
 import json, os, sys, unittest
 sys.path.insert(0, os.path.dirname(__file__))
-HELP = os.environ.get("HELP_JSON", os.path.expanduser(
-    "~/CodingProjects/aisleledger-wt/android/shared/help/help.json"))
+HELP = os.environ.get("HELP_JSON", os.path.expanduser("~/CodingProjects/aisleledger/shared/help/help.json"))
 
 
 class BuildSupportTests(unittest.TestCase):
@@ -25,6 +24,12 @@ class BuildSupportTests(unittest.TestCase):
 
     def test_contact_email_present(self):
         self.assertIn("mailto:support@gigledger.org", self.html)
+
+    def test_support_page_is_not_stale(self):
+        """support.html must be exactly what help.json renders to — rerun scripts/build_support.py otherwise."""
+        import build_support
+        page = open(os.path.join(build_support.SITE_DIR, "support.html")).read()
+        self.assertEqual(page, self.html, "support.html is stale: python3 scripts/build_support.py")
 
     def test_html_escapes(self):
         import build_support

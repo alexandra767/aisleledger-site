@@ -1,7 +1,7 @@
 """Writes support.html from the apps' shared help text, so the website says
 exactly what the iPhone and Android apps say.
 
-python3 scripts/build_support.py ~/CodingProjects/aisleledger-wt/android/shared/help/help.json
+python3 scripts/build_support.py [path/to/help.json]   (default: the app repo's shared/help/help.json)
 """
 import html, json, os, sys
 
@@ -69,8 +69,11 @@ def render(help):
     return "\n".join(out)
 
 
+DEFAULT_HELP = os.path.expanduser("~/CodingProjects/aisleledger/shared/help/help.json")
+SITE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 if __name__ == "__main__":
-    src = sys.argv[1]
-    dest = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "support.html")
+    src = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("HELP_JSON", DEFAULT_HELP)
+    dest = os.path.join(SITE_DIR, "support.html")
     open(dest, "w").write(render(json.load(open(src))))
     print("wrote", dest)
